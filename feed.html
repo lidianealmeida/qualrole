@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Qual Rolê</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/feed.css">
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+  <link rel="shortcut icon" href="src/img/favicon.ico" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="src/js/bootbox.min.js"></script>
+</head>
+
+<body class="body">
+  <!-- Navbar start -->
+  <header class="header">
+    <nav class="df justify-content-end navbar navbar-expand-lg navbar-dark bg-purple">
+      <a id="logo-navbar" class="navbar-brand" href="#"><img src="src/img/logo-qual-role.svg" class='style-logo-feed'></a>
+      <button class="navbar-toggler brand-size" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="justify-content-end collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a href="#" id="profile-pic-nav"><img id="profile-pic-navbar" class="rounded-circle pic-navbar"></a></li>
+          <li class="nav-item active">
+          <li class="nav-item"> <a href="#" id="profile-pic-nav"><img id="profile-pic-navbar" class="rounded-circle pic-navbar"></a></li>
+          <li class="nav-item active">
+            <input id="home" type=image src="src/img/icon-home.svg" href="feed.html" class="btn-nav">
+          </li>
+          <li class="nav-item active">
+            <input type=image data-toggle="modal" data-target=".bd-example-modal-sm" src="src/img/icon-filter.svg" href="#" class="btn-nav">
+          </li>
+          <li class="nav-item active">
+            <input id="eventModal" data-toggle="modal" type=image data-target=".myModal" src="src/img/icon-add.svg" href="#" class="btn-nav">
+          </li>
+          <li class="nav-item active">
+            <img src="src/img/icon-sair.svg" alt="" class="button-logout btn-nav">
+          </li>         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Navbar finish -->
+
+  <!-- Modal create event start -->
+  <div class="modal fade myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-event">
+        <form id="createEvent" class="signup">                    
+          <input type="text" placeholder="Nome do Evento" id="event" class="input-event"/>
+          <input type="date" placeholder="Data" id="date" class="input-event"/>
+          <input type="text" placeholder="Local" id="local" class="input-event"/>
+          <input type="text" placeholder="Endereço" id="address" class="input-event"/>
+          <input type="text" placeholder="Preço" id="price" class="input-event"/>
+          <input type="text" placeholder="Descrição" id="description" class="input-event"/>
+          <input type="text" placeholder="URL Foto" id="photo" class="input-event"/>
+          <select id="category" class="input-event"> 
+            <option value="bares">Bares</option><br>
+            <option value="shows">Shows</option><br>
+            <option value="festivais">Festivais</option><br>
+            <option value="culturais">Culturais</option><br>
+            <option value="gastronomicos">Gastronômicos</option>
+          </select>
+          <input type="submit" class="input-event btn-event"> 
+        </form> 
+      </div>
+    </div>
+  </div>
+  <!-- Modal create event finish -->
+
+  <!-- Modal filter start -->
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <p class="modal-title mt-2 ml-2 modal-title dark-blue-font">QUAL ROLÊ?</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="ml-1 mb-1 form-check check-style">
+          <input class="form-check-input position-static" name="filter-check" type="checkbox" id="bares" value="option1" aria-label="...">
+          <label class="font-style bg-transparent font-weight-bold align-middle" for="bares">BARES</label>
+        </div>
+        <div class="ml-1 mb-1 form-check check-style">
+          <input class="form-check-input position-static" name="filter-check" type="checkbox" id="shows" value="option1" aria-label="...">
+          <label class="font-style bg-transparent font-weight-bold align-middle" for="shows">SHOWS</label>
+        </div>
+        <div class="ml-1 mb-1 form-check check-style">
+          <input class="form-check-input position-static" name="filter-check" type="checkbox" id="festivais" value="option1" aria-label="...">
+          <label class="font-style bg-transparent font-weight-bold align-middle" for="festivais">FESTIVAIS</label>
+        </div>
+        <div class="ml-1 mb-1 form-check check-style">
+          <input class="form-check-input position-static" name="filter-check" type="checkbox" id="culturais" value="option1" aria-label="...">
+          <label class="font-style bg-transparent font-weight-bold align-middle" for="culturais">CULTURAIS</label>
+        </div>
+        <div class="ml-1 mb-1 form-check check-style">
+          <input class="form-check-input position-static" name="filter-check" type="checkbox" id="gastronomicos" value="option1" aria-label="...">
+          <label class="font-style bg-transparent font-weight-bold align-middle" for="gastronomicos">GASTRONÔMICOS</label>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="button" id="filter" class="mr-1 mb-3 col-2 btn dark-blue-font fas fa-angle-right"><strong></strong></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal filter finish -->
+  
+  <main>
+
+  <!-- Create aside start -->  
+    <div class="container-fluid gedf-wrapper">
+      <div class="row">
+
+  <!-- Card destaques start -->
+        <div class="col-md-3">
+          <div class="card " id="card-left">
+            <div class="card-body">
+              <div class="h5">Destaques da semana</div>
+              <div class="h7 text-muted">Veja os principais eventos da semana:</div><br>
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="src/img/bts-card.jpg" alt="Banda BTS">
+                  <div class="card-body">
+                    <p class="card-text date-time">sáb, 25 de maio, 19:00</p>
+                    <p class="card-text local">Allianz Parque</p>
+                    <a href="https://www.eventim.com.br/bts-world-tour-love-yourself-speak-yourself-in-brazil-ingressos.html?affiliate=BR1&doc=artistPages/tickets&fun=artist&action=tickets&kuid=565077" class="card-text name-evt">BTS</a></p>
+                  </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="src/img/skuta-card.jpg" alt="Festival Skuta">
+                  <div class="card-body">
+                    <p class="card-text date-time">sáb, 25 de maio, 18:00</p>
+                    <p class="card-text local">Arena Anhembi</p>
+                    <a href="https://www.ingressorapido.com.br/event/30229-1/" class="card-text name-evt">FESTIVAL SKUTA</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!-- Card destaques finish -->
+
+  <!-- Section main event start -->
+        <div class="col-md-6 gedf-main"><br>
+          <h5 class="h5">Rolês de hoje</h5><br>
+          <div id="cardSpot"></div>
+          <div id="cardCommon"></div>
+        </div>
+  <!-- Section main event finish -->
+
+  <!-- Card calendar start -->
+        <div class="col-md-3 ">
+          <div class="card gedf-card">
+            <div class="card-body">
+              <h5 class="card-title h5">Agenda:</h5>
+              <h7 class="card-subtitle mb-2 text-muted h7">click na agenda e confira os rolês!</h7>
+              <p class="card-text"></p>
+              <a href="https://www.google.com/search?q=eventos&rlz=1C1CHZL_pt-BRBR757BR757&oq=eventos&aqs=chrome..69i57j0j69i60j0l3.1272j0j8&sourceid=chrome&ie=UTF-8&ibp=htl;events&rciv=evn#fpstate=tldetail&htidocid=WTH0uHAcJhwKh9IhJpA8-A%3D%3D&htivrt=events"><img src="src/img/icon-calendar.svg" alt="Botão de agenda de eventos"></a>
+            </div>
+          </div>
+        </div>
+  <!-- Card calendar finish -->
+
+      </div>
+    </div>
+  <!-- Create aside finish --> 
+  </main>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="src/js/config.js"></script>
+  <script src="src/js/eventData.js"></script>
+  <script src="src/js/template.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ce550934f1ee2a6"></script>
+
+</body>
+
+</html>

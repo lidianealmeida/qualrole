@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Qual Rolê</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+  <script src="src/js/config.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/login.css">
+  <link rel="shortcut icon" href="src/img/favicon.ico"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="src/js/bootbox.min.js"></script>
+</head>
+
+<body class="body">
+  <div class="container" id="login">
+    <div class="container-img">
+      <img class="img" src="src/img/logo-qual-role.svg" alt="Logo Qual Rolê">
+    </div>
+    <div class="container-login row login-panel">
+      <div class="col-md-7 col-md-offset-2.5">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+            <div class="row sa">
+              <div class="col-xs-6">
+                <a href="#" class="active" id="login-form-link">Entrar</a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#" id="register-form-link">Registrar</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <form id="login-form" style="display: block;">
+                  <div class="form-group d-flex">
+                    <span><i class="far fa-envelope"></i></span>
+                    <input type="email" id="login-email" class="input-form" placeholder="E-mail">
+                  </div>
+                  <div class="form-group d-flex">
+                    <span><i class="fas fa-key"></i></span>
+                    <input type="password" id="login-password" class="input-form" placeholder="Senha">
+                  </div>
+                  <!-- <div class="text-center forget-password">
+                      <a href="#" class="text-size forgot-password">Esqueceu a senha?</a>.
+                  </div> -->
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <div class="btn-login-social col-sm-8 col-sm-offset-2 row justify-content-center">
+                        <button class="form-btn btn-login btn btn-lg btn-primary fab fa-facebook-f fa-2x" id="authFacebookButton"></button>
+                        <button class="form-btn btn-login btn btn-lg btn-danger fab fa-google-plus-g fa-2x" id="authGoogleButton"></button>
+                        <button type="submit" id="login-submit" class="form-btn btn-login fas fa-chevron-right btn-arrow button-presentation"></button>
+                      </div>
+                    </div>
+                  </div>
+                 
+                </form>
+                <form id="register-form" style="display: none;" class="container">
+                  <div class="form-group">
+                  <input type="text" id="name" class="input-form" placeholder="*Nome">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" id="email" class="input-form" placeholder="*Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" id="password" class="input-form" placeholder="*Senha">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" id="confirm-password" class="input-form" placeholder="*Confirmar senha">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" id="cnpj" class="input-form" placeholder="Cnpj">
+                  </div>
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <div class="col-sm-6 col-sm-offset-3 row justify-content-center">
+                        <button type="submit" id="register-submit" class="form-btn btn-register button-presentation"><i
+                            class="fas fa-chevron-right"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="src/js/login.js"></script>
+  
+  <script src="src/js/config.js"></script>
+  <script src="src/js/presentation.js"></script>
+  
+</body>
+
+</html>

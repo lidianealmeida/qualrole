@@ -1,0 +1,124 @@
+.style-logo-feed {
+    width: 60%;
+}
+
+.btn-nav {
+    width: 2.5rem;
+    margin: 20px;
+}
+
+.btn-nav :hover {
+    color: pink;
+}
+
+.btn-off {
+    width: 2rem;
+    margin: 20px;
+}
+
+.check-style input{
+    display: none;
+}
+
+.font-style{
+    font-size: 0.8rem;
+    padding-left: 35px;
+    cursor: pointer;
+    color: #d64161;
+}
+.dark-blue-font{
+    font-size: 0.9rem;
+    color: #2b196e !important;
+    font-weight: 700;
+}
+
+.dark-blue-font button:hover{
+    background-color: #2b196e36;
+}
+
+.check-style label{
+    position: relative;
+}
+
+.check-style label::before{
+    content: "";
+    border: solid 1px #d64161;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    left: 0;
+    top: -1.5px;
+    border-radius: 5px;
+}
+
+.check-style label::after{
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 1.5px;
+    border-radius: 5px;
+}
+
+.check-style input:checked + label::after {
+    background-color: #d64161;
+}
+
+.modal-event {
+    font-family: Roboto;
+    text-align: center;
+    padding: 2rem;
+    width: 150px;
+    height: auto;
+}
+
+.btn-event {
+    width: 2.7rem;
+    color: white;
+    background-color: #3BCDE2;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.input-event {
+    width: 10rem;
+    margin-top: 0.5rem;
+}
+
+.h5 {
+    font-family: Roboto;
+    color: #5862AB;    
+}
+
+.h7 {
+    font-family: Roboto;
+}
+
+.date-time {
+    font-family: Roboto;
+    font-size: 0.8rem;
+    color: #FF5F99;
+    margin: 0;
+}
+
+.name-evt {
+    font-family: Roboto;
+    font-size: 1.5rem;
+    color: #5862AB;
+    margin:0;
+}
+
+.local {
+    font-family: Roboto;
+    font-size: 0.8rem;
+    color: #96989A;
+}
+
+.text {
+    font-family: Roboto;
+}
